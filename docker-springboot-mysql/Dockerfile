@@ -2,6 +2,8 @@ FROM openjdk:8-jre-alpine
 MAINTAINER dhibdhafer@gmail.com
 ADD target/docker-springboot-mysql-0.0.1-SNAPSHOT.jar app.jar
 ADD run.sh run.sh
+
+RUN apk add --no-cache bash
 RUN bash -c 'chmod +x /run.sh'
 RUN bash -c 'touch /app.jar'
 EXPOSE 8081 8081

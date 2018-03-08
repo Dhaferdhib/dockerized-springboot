@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.3'
 services:
   database:
     image: mysql:5.7
@@ -17,11 +17,10 @@ services:
     depends_on:
      - database
     environment:
-      - DATABASE_HOST=${MYSQL_HOST}
-      - DATABASE_USER=${MYSQL_USER}
-      - DATABASE_PASSWORD=${MYSQL_PASSWORD}
-      - DATABASE_NAME=${MYSQL_DATABASE}
-      - DATABASE_PORT=${MYSQL_PORT}
+      - MYSQL_HOST=database
+      - MYSQL_PORT=3306
+    env_file:
+      - ./.env
 networks:
   ds:
     driver: bridge
